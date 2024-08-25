@@ -40,7 +40,7 @@ const Page = () => {
 
   const { mutate: signIn, isLoading } = trpc.auth.signIn.useMutation({
     onSuccess: () => {
-      toast.success("Signed in successfully");
+      toast.success("Giriş Başarılı");
       router.refresh();
 
       if (origin) {
@@ -55,7 +55,7 @@ const Page = () => {
     },
     onError: (err) => {
       if (err.data?.code === "UNAUTHORIZED") {
-        toast.error("Invalid email or password.");
+        toast.error("Geçersiz mail adresi veya şifre.");
       }
     },
   });
@@ -71,7 +71,7 @@ const Page = () => {
           <div className="flex flex-col items-center space-y-2 text-center">
             <Icons.logo className="h-20 w-20" />
             <h1 className="text-2xl font-bold">
-              Sign in to your {isSeller ? "seller" : ""} account
+            {isSeller ? "Satıcı" : ""} Hesabınıza giriş yapın
             </h1>
             <Link
               href="/sign-up"
@@ -80,7 +80,7 @@ const Page = () => {
                 className: "gap-1.5",
               })}
             >
-              Don&apos;t have an account?
+              Hesabınız yok mu?
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -88,7 +88,7 @@ const Page = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="grid gap-2">
                 <div className="grid gap-1 py-2">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email">E-posta adresi</Label>
                   <Input
                     {...register("email")}
                     className={cn({
@@ -103,14 +103,14 @@ const Page = () => {
                   )}
                 </div>
                 <div className="grid gap-1 py-2">
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password">Şifre</Label>
                   <Input
                     {...register("password")}
                     type="password"
                     className={cn({
                       "focus-visible:ring-red-500": errors.password,
                     })}
-                    placeholder="password"
+                    placeholder="********"
                   />
                   {errors?.password && (
                     <p className="text-sm text-red-500">
@@ -118,7 +118,7 @@ const Page = () => {
                     </p>
                   )}
                 </div>
-                <Button>Sign in</Button>
+                <Button>Giriş</Button>
               </div>
             </form>
             <div className="relative">
@@ -130,7 +130,7 @@ const Page = () => {
               </div>
               <div className="relative flex justify-center text-xs uppercase">
                 <span className="bg-background px-2 text-muted-foreground">
-                  or
+                  Veya
                 </span>
               </div>
             </div>
@@ -140,7 +140,7 @@ const Page = () => {
                 variant="secondary"
                 disabled={isLoading}
               >
-                Continue as Customer
+                Kullanıcı olarak giriş yap
               </Button>
             ) : (
               <Button
@@ -148,7 +148,7 @@ const Page = () => {
                 variant="secondary"
                 disabled={isLoading}
               >
-                Continue as Seller
+                Satıcı olarak giriş yap
               </Button>
             )}
           </div>

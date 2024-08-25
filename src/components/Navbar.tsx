@@ -35,7 +35,7 @@ const Navbar = async () => {
                       href="/sign-in"
                       className={buttonVariants({ variant: "ghost" })}
                     >
-                      Sign In
+                      Giriş yap
                     </Link>
                   )}
                   {user ? null : (
@@ -48,7 +48,7 @@ const Navbar = async () => {
                       href="/sign-up"
                       className={buttonVariants({ variant: "ghost" })}
                     >
-                      Create Account
+                      Hesap oluştur
                     </Link>
                   )}
                   {user ? (

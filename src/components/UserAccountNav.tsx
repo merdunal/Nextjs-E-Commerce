@@ -20,7 +20,7 @@ const UserAccountNav = ({ user }: { user: User }) => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="overflow-visible">
         <Button variant="ghost" size="sm" className="relative">
-          My Account
+          Profilim
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="bg-white w-60 end">
@@ -31,10 +31,10 @@ const UserAccountNav = ({ user }: { user: User }) => {
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href="/sell">Seller Dashboard</Link>
+          <Link href="/sell">Satıcı Paneli</Link>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={signOut} className="cursor-pointer">
-          Log out
+          Çıkış Yap
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

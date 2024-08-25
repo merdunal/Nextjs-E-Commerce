@@ -16,8 +16,8 @@ interface PageProps {
 }
 
 const BREADCRUMBS = [
-  { id: 1, name: "Home", href: "/" },
-  { id: 2, name: "Products", href: "/products" },
+  { id: 1, name: "Ana sayfa", href: "/" },
+  { id: 2, name: "Ürünler", href: "/products" },
 ];
 
 const Page = async ({ params }: PageProps) => {
@@ -112,7 +112,7 @@ const Page = async ({ params }: PageProps) => {
                   className="h-5 w-5 flex-shrink-0 text-green-500"
                 />
                 <p className="ml-2 text-sm text-muted-foreground">
-                  Eligible for instant delivery
+                  Anında teslimat
                 </p>
               </div>
             </section>
@@ -138,7 +138,7 @@ const Page = async ({ params }: PageProps) => {
                     className="mr-2 h-5 w-5 flex-shrink-0 text-gray-400"
                   />
                   <span className="text-muted-foreground hover:text-gray-700">
-                    30 Day Return Guarantee
+                    30 gün iade garantisi
                   </span>
                 </div>
               </div>
@@ -150,8 +150,8 @@ const Page = async ({ params }: PageProps) => {
       <ProductReel
         href="/products"
         query={{ category: product.category, limit: 4 }}
-        title={`Similar ${label}`}
-        subtitle={`Browse similar high-quality ${label} just like '${product.name}'`}
+        title={`Benzer ${label} ürünleri`}
+        subtitle={`${label} kategorisindeki benzer ürünleri incele`}
       />
     </MaxWidthWrapper>
   );

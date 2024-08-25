@@ -7,22 +7,22 @@ import Link from "next/link";
 export default function Home() {
   const perks = [
     {
-      name: "Instant delivery",
+      name: "Anında teslimat",
       Icon: ArrowDownToLine,
       description:
-        "Get your assets delivered to your email in seconds and download them right away.",
+        "Satın aldığınız ürünleri anında kargo ile kapınızda teslim alın.",
     },
     {
-      name: "Guaranteed quality",
+      name: "Ürün garantisi",
       Icon: CheckCircle,
       description:
-        "Every asset on our platform is verified by our team to ensure our highest quality standarts.",
+        "Tüm ürünlerimiz garanti kapsamındadır.",
     },
     {
-      name: "For the planet",
+      name: "Bize ulaşın",
       Icon: LeafIcon,
       description:
-        "We've pledged %1 of sales to the perservation and restoration of the natural environment.",
+        "eticaret@gmail.com<br/>+90 123 456 7890",
     },
   ];
 
@@ -31,26 +31,28 @@ export default function Home() {
       <MaxWidthWrapper>
         <div className="py-20 mx-auto text-center flex flex-col items-center max-w-3xl">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-            Your marketplace for high-quality{" "}
-            <span className="text-blue-600">digital assets</span>
+            Kaliteli {" "}
+            <span className="text-blue-600">elektronik ürün </span>
+            ve {" "}
+            <span className="text-blue-600">aksesuarlar </span>
+            İçin Pazar Yeriniz {" "}
           </h1>
           <p className="mt-6 text-lg max-w-prose text-muted-foreground">
-            Welcome to the Digital Marketplace. Every asset on our platform is
-            verified by our team to ensure our highest quality standarts.
+          Hoş geldiniz! sitemizde yer alan her ürün, ekibimiz tarafından titizlikle doğrulanmış olup en yüksek kalite standartlarına uygunluğu garanti edilmiştir.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
             <Link href="/products" className={buttonVariants()}>
-              Browse Trending
+              Tüm Ürünler
             </Link>
-            <Button variant="ghost">Our quality promise &rarr;</Button>
+            <Button variant="ghost">Kalite Standartlarımız &rarr;</Button>
           </div>
         </div>
 
         <ProductReel
           query={{ sort: "desc", limit: 4 }}
           href="/products"
-          title="Brand New"
-        />
+          title="Tüm Ürünler"
+       />
       </MaxWidthWrapper>
 
       <section className="border-t border-gray-200 bg-gray-50">
@@ -70,9 +72,9 @@ export default function Home() {
                   <h3 className="text-base font-medium text-gray-900">
                     {perk.name}
                   </h3>
-                  <p className="mt-3 text-sm text-muted-foreground">
-                    {perk.description}
-                  </p>
+                  <p className="mt-3 text-sm text-muted-foreground"
+                     dangerouslySetInnerHTML={{ __html: perk.description }}
+                  />
                 </div>
               </div>
             ))}

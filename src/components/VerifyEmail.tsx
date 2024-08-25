@@ -20,7 +20,7 @@ const VerifyEmail = ({ token }: VerifyEmailProps) => {
         <XCircle className="h-8 w-8 text-red-600" />
         <h3 className="font-semibold text-xl">There was a problem</h3>
         <p className="text-muted-foreground text-sm">
-          This token is not valid or it might be expired. Please try again.
+          Bu token geçerli değil veya süresi dolmuş. Lütfen tekrar deneyin.
         </p>
       </div>
     );
@@ -32,12 +32,12 @@ const VerifyEmail = ({ token }: VerifyEmailProps) => {
         <div className="relative mb-4 h-60 w-60 text-muted-foreground">
           <Image src="/hippo-email-sent.png" fill alt="the email was sent" />
         </div>
-        <h3 className="font-semibold text-2xl">You&apos;re all set!</h3>
+        <h3 className="font-semibold text-2xl">Her şey hazır!</h3>
         <p className="text-muted-foreground text-center mt-1">
-          Thank you for verifying your email
+          E-posta adresinizi doğruladığınız için teşekkür ederiz.
         </p>
         <Link href="/sign-in" className={buttonVariants({ className: "mt-4" })}>
-          Sign in
+          Giriş yap
         </Link>
       </div>
     );
@@ -49,7 +49,7 @@ const VerifyEmail = ({ token }: VerifyEmailProps) => {
         <Loader2 className="animate-spin h-8 w-8 text-zinc-300" />
         <h3 className="font-semibold text-xl">Verifying...</h3>
         <p className="text-muted-foreground text-sm">
-          This won&apos;t take long.
+          Bu işlem birkaç dakika sürebilir.
         </p>
       </div>
     );

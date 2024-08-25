@@ -31,17 +31,17 @@ const Page = () => {
   const { mutate, isLoading } = trpc.auth.createPayloadUser.useMutation({
     onError: (err) => {
       if (err.data?.code === "CONFLICT") {
-        toast.error("This email is already in use. Sign in instead?");
+        toast.error("Bu E-posta adresi zaten kullanılıyor. Giriş yap?");
         return;
       }
       if (err instanceof ZodError) {
         toast.error(err.issues[0].message);
         return;
       }
-      toast.error("Something went wrong. Please try again.");
+      toast.error("Bir şeyler ters gitti. Lütfen tekrar deneyin.");
     },
     onSuccess: ({ sentToEmail }) => {
-      toast.success(`Verification email sent to ${sentToEmail}`);
+      toast.success(`Doğrulama E-postası ${sentToEmail} adresine gönderildi.`);
       router.push("/verify-email?to=" + sentToEmail);
     },
   });
@@ -56,7 +56,7 @@ const Page = () => {
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           <div className="flex flex-col items-center space-y-2 text-center">
             <Icons.logo className="h-20 w-20" />
-            <h1 className="text-2xl font-bold">Create an Account</h1>
+            <h1 className="text-2xl font-bold">Hesap oluştur</h1>
             <Link
               href="/sign-in"
               className={buttonVariants({
@@ -64,7 +64,7 @@ const Page = () => {
                 className: "gap-1.5",
               })}
             >
-              Already have an account? Sign-in
+              Zaten bir hesabınız var mı? Giriş yapın?
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -72,7 +72,7 @@ const Page = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="grid gap-2">
                 <div className="grid gap-1 py-2">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email">E-posta adresi</Label>
                   <Input
                     {...register("email")}
                     className={cn({
@@ -87,14 +87,14 @@ const Page = () => {
                   )}
                 </div>
                 <div className="grid gap-1 py-2">
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password">Şifre</Label>
                   <Input
                     {...register("password")}
                     type="password"
                     className={cn({
                       "focus-visible:ring-red-500": errors.password,
                     })}
-                    placeholder="password"
+                    placeholder="********"
                   />
                   {errors?.password && (
                     <p className="text-sm text-red-500">
@@ -102,7 +102,7 @@ const Page = () => {
                     </p>
                   )}
                 </div>
-                <Button>Sign up</Button>
+                <Button>Hesap oluştur</Button>
               </div>
             </form>
           </div>

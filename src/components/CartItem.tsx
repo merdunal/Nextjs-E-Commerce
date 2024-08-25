@@ -47,7 +47,7 @@ const CartItem = ({ product }: { product: Product }) => {
                 onClick={() => removeItem(product.id)}
                 className="flex items-center gap-0.5"
               >
-                <X className="w-3 h-3" /> Remove
+                <X className="w-3 h-3" />Kaldır
               </button>
             </div>
           </div>

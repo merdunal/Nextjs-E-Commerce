@@ -49,7 +49,7 @@ const Cart = () => {
       </SheetTrigger>
       <SheetContent className="flex flex-col w-full pr-0 sm:max-w-lg">
         <SheetHeader className="space-y-2.5 pr-6">
-          <SheetTitle>Cart ({itemCount})</SheetTitle>
+          <SheetTitle>Sepet ({itemCount})</SheetTitle>
         </SheetHeader>
         {itemCount > 0 ? (
           <>
@@ -64,15 +64,15 @@ const Cart = () => {
               <Separator />
               <div className="space-y-1.5 text-sm">
                 <div className="flex">
-                  <span className="flex-1">Shipping</span>
-                  <span>Free</span>
+                  <span className="flex-1">Kargo</span>
+                  <span>Ücretsiz</span>
                 </div>
                 <div className="flex">
-                  <span className="flex-1">Transaction fee</span>
+                  <span className="flex-1">İşlem ücreti</span>
                   <span>{formatPrice(fee)}</span>
                 </div>
                 <div className="flex">
-                  <span className="flex-1">Total</span>
+                  <span className="flex-1">Toplam</span>
                   <span>{formatPrice(cartTotal + fee)}</span>
                 </div>
               </div>
@@ -85,7 +85,7 @@ const Cart = () => {
                       className: "w-full",
                     })}
                   >
-                    Continue to Checkout
+                    Ödeme işlemine geçin
                   </Link>
                 </SheetTrigger>
               </SheetFooter>
@@ -103,7 +103,7 @@ const Cart = () => {
                 alt="empty shopping cart hippo"
               />
             </div>
-            <div className="text-xl font-semibold">Your cart is empty</div>
+            <div className="text-xl font-semibold">Sepetinizde ürün bulunmamaktadır</div>
             <SheetTrigger asChild>
               <Link
                 href={"/products"}
@@ -113,7 +113,7 @@ const Cart = () => {
                   className: "text-sm text-muted-foreground",
                 })}
               >
-                Add items to your cart to checkout
+                Sepetinize ürün ekleyin
               </Link>
             </SheetTrigger>
           </div>
