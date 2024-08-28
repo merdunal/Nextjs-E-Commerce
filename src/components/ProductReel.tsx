@@ -55,7 +55,7 @@ const ProductReel = (props: ProductReelProps) => {
         {href ? (
           <Link
             href={href}
-            className="hidden text-sm font-medium text-blue-600 hover:text-blue-500 md:block"
+            className="hidden text-sm font-medium text-green-600 hover:text-green-500 md:block"
           >
             Ürünleri incele <span aria-hidden="true">&rarr;</span>
           </Link>
