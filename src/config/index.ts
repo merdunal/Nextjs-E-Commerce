@@ -1,43 +1,77 @@
 export const PRODUCT_CATEGORIES = [
   {
-    label: "Elektronik",
-    value: "ui_kits" as const,
+    label: "Kategoriler",
+    value: "kategoriler" as const,
     featured: [
       {
-        name: "Editor picks",
-        href: "#",
-        imageSrc: "/nav/ui-kits/mixed.jpg",
+        name: "Cep Telefonu ve Tablet",
+        href: "cep-telefonu-ve-tablet",
+        //imageSrc: "/nav/ui-kits/mixed.jpg",
       },
       {
-        name: "New Arrivals",
-        href: "#",
-        imageSrc: "/nav/ui-kits/blue.jpg",
+        name: "Powerbank",
+        href: "powerbank",
+        //imageSrc: "/nav/ui-kits/blue.jpg",
       },
       {
-        name: "Bestsellers",
-        href: "#",
-        imageSrc: "/nav/ui-kits/purple.jpg",
-      },
-    ],
-  },
-  {
-    label: "Aksesuar",
-    value: "icons" as const,
-    featured: [
-      {
-        name: "Favorite Icon Picks",
-        href: "#",
-        imageSrc: "/nav/icons/picks.jpg",
+        name: "Şarj Cihazı",
+        href: "sarj-cihazi",
+        //imageSrc: "/nav/ui-kits/purple.jpg",
       },
       {
-        name: "New Arrivals",
-        href: "#",
-        imageSrc: "/nav/icons/new.jpg",
+        name: "Kablo",
+        href: "kablo",
+        //imageSrc: "/nav/ui-kits/mixed.jpg",
       },
       {
-        name: "Bestselling Icons",
-        href: "#",
-        imageSrc: "/nav/icons/bestsellers.jpg",
+        name: "Ses ve Müzik",
+        href: "ses-ve-muzik",
+        //imageSrc: "/nav/ui-kits/blue.jpg",
+      },
+      {
+        name: "Araç Tutucu",
+        href: "arac-tutucu",
+        //imageSrc: "/nav/ui-kits/purple.jpg",
+      },
+      {
+        name: "Aksesurlar",
+        href: "aksesuarlar",
+        //imageSrc: "/nav/ui-kits/mixed.jpg",
+      },
+      {
+        name: "Giyilebilir Teknoloji",
+        href: "giyilebilir-teknoloji",
+        //imageSrc: "/nav/ui-kits/blue.jpg",
+      },
+      {
+        name: "Hafıza Ürünleri",
+        href: "hafiza-urunleri",
+        //imageSrc: "/nav/ui-kits/purple.jpg",
+      },
+      {
+        name: "Çevre Birimleri",
+        href: "cevre-birimleri",
+        //imageSrc: "/nav/ui-kits/mixed.jpg",
+      },
+      {
+        name: "Telefon Kılıfı",
+        href: "telefon-kilifi",
+        //imageSrc: "/nav/ui-kits/blue.jpg",
+      },
+      {
+        name: "Telefon Ekran Koruyucu",
+        href: "telefon-ekran-koruyucu",
+        //imageSrc: "/nav/ui-kits/purple.jpg",
+      },
+      {
+        name: "Tablet Kılıfı",
+        href: "tablet-kilifi",
+        //imageSrc: "/nav/ui-kits/mixed.jpg",
+      },
+      {
+        name: "Tablet Ekran Koruyucu",
+        href: "tablet-ekran-koruyucu",
+        //imageSrc: "/nav/ui-kits/blue.jpg",
       },
     ],
   },
