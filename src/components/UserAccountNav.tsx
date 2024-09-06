@@ -30,8 +30,16 @@ const UserAccountNav = ({ user }: { user: User }) => {
           </div>
         </div>
         <DropdownMenuSeparator />
+        {user.role === 'admin' && (
+          <DropdownMenuItem asChild>
+            <Link href="/dashboard">Satıcı Paneli</Link>
+          </DropdownMenuItem>
+        )}
         <DropdownMenuItem asChild>
-          <Link href="/sell">Satıcı Paneli</Link>
+          <Link href="/dashboard/account">Hesap bilgilerim</Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link href="/dashboard/collections/orders">Siparişlerim</Link>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={signOut} className="cursor-pointer">
           Çıkış Yap

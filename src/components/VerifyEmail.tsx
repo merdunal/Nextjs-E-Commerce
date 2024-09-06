@@ -18,7 +18,7 @@ const VerifyEmail = ({ token }: VerifyEmailProps) => {
     return (
       <div className="flex flex-col items-center gap-2">
         <XCircle className="h-8 w-8 text-red-600" />
-        <h3 className="font-semibold text-xl">There was a problem</h3>
+        <h3 className="font-semibold text-xl">Bir problem oldu</h3>
         <p className="text-muted-foreground text-sm">
           Bu token geçerli değil veya süresi dolmuş. Lütfen tekrar deneyin.
         </p>
@@ -47,7 +47,7 @@ const VerifyEmail = ({ token }: VerifyEmailProps) => {
     return (
       <div className="flex flex-col items-center gap-2">
         <Loader2 className="animate-spin h-8 w-8 text-zinc-300" />
-        <h3 className="font-semibold text-xl">Verifying...</h3>
+        <h3 className="font-semibold text-xl">Doğrulanıyor...</h3>
         <p className="text-muted-foreground text-sm">
           Bu işlem birkaç dakika sürebilir.
         </p>

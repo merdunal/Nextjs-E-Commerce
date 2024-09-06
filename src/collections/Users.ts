@@ -1,3 +1,5 @@
+import { isAdminOrSelf } from "../access/isAdminOrSelf";
+import { isAdmin, isAdminFieldLevel } from "../access/isAdmin";
 import { CollectionConfig } from "payload/types";
 
 export const Users: CollectionConfig = {
@@ -10,8 +12,13 @@ export const Users: CollectionConfig = {
     },
   },
   access: {
-    read: () => true,
-    create: () => true,
+    read: isAdminOrSelf,
+    create: isAdmin,
+    update: isAdminOrSelf,
+    delete: isAdmin,
+  },
+  admin: {
+    hidden: ({ user }) => user.role !== "admin",
   },
   fields: [
     {
@@ -23,6 +30,10 @@ export const Users: CollectionConfig = {
         { label: "Admin", value: "admin" },
         { label: "User", value: "user" },
       ],
+      access: {
+        create: isAdminFieldLevel,
+        update: isAdminFieldLevel,
+      },
     },
   ],
 };

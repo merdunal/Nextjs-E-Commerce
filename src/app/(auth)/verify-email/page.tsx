@@ -27,15 +27,15 @@ const VerifyEmailPage = ({ searchParams }: PageProps) => {
                 fill
               />
             </div>
-            <h3 className="font-semibold text-2xl">Check your email</h3>
+            <h3 className="font-semibold text-2xl">Lütfen e-postanızı kontrol edin.</h3>
             {toEmail ? (
               <p className="text-muted-foreground text-center">
-                We have sent a verification link to{" "}
+                {" "}Adresine bir doğrulama bağlantısı gönderdik.
                 <span className="font-semibold">{toEmail}</span>
               </p>
             ) : (
               <p className="text-muted-foreground text-center">
-                We have sent a verification link to your email.
+               E-postanıza bir doğrulama bağlantısı gönderdik.
               </p>
             )}
           </div>

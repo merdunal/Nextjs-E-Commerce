@@ -11,7 +11,6 @@ export interface Config {
     users: User;
     products: Product;
     media: Media;
-    product_files: ProductFile;
     orders: Order;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -48,8 +47,7 @@ export interface Product {
   name: string;
   description?: string | null;
   price: number;
-  category: 'ui_kits' | 'icons';
-  product_files: string | ProductFile;
+  category: 'cep-telefonu-ve-tablet' | 'powerbank' | 'sarj-cihazi' | 'kablo' | 'ses-ve-muzik' | 'arac-tutucu' | 'aksesuarlar' | 'giyilebilir-teknoloji' | 'hafiza-urunleri' | 'cevre-birimleri' | 'telefon-kilifi' | 'telefon-ekran-koruyucu' | 'tablet-kilifi' | 'tablet-ekran-koruyucu';
   approvedForSale?: ('pending' | 'approved' | 'denied') | null;
   priceId?: string | null;
   stripeId?: string | null;
@@ -59,22 +57,6 @@ export interface Product {
   }[];
   updatedAt: string;
   createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "product_files".
- */
-export interface ProductFile {
-  id: string;
-  user?: (string | null) | User;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

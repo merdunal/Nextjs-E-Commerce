@@ -1,12 +1,18 @@
 import { PRODUCT_CATEGORIES } from "../../config";
 import { CollectionConfig } from "payload/types";
+import { isAdmin, isAdminFieldLevel } from "../../access/isAdmin";
 
 export const Products: CollectionConfig = {
   slug: "products",
   admin: {
     useAsTitle: "name",
   },
-  access: {},
+  access: {
+    read: isAdmin,
+    create: isAdmin,
+    update: isAdmin,
+    delete: isAdmin,
+  },
   fields: [
     {
       name: "user",
@@ -20,18 +26,18 @@ export const Products: CollectionConfig = {
     },
     {
       name: "name",
-      label: "Name",
+      label: "Ürün adı",
       type: "text",
       required: true,
     },
     {
       name: "description",
-      label: "Product details",
+      label: "Ürün açıklaması",
       type: "textarea",
     },
     {
       name: "price",
-      label: "Price in TRY",
+      label: "Fiyat",
       min: 0,
       max: 100000,
       type: "number",
@@ -39,18 +45,10 @@ export const Products: CollectionConfig = {
     },
     {
       name: "category",
-      label: "Category",
+      label: "kategori",
       type: "select",
       options: PRODUCT_CATEGORIES.map(({ label, value }) => ({ label, value })),
       required: true,
-    },
-    {
-      name: "product_files",
-      label: "Product file(s)",
-      type: "relationship",
-      required: true,
-      relationTo: "product_files",
-      hasMany: false,
     },
     {
       name: "approvedForSale",
@@ -58,9 +56,9 @@ export const Products: CollectionConfig = {
       type: "select",
       defaultValue: "pending",
       access: {
-        create: ({ req }) => req.user.role === "admin",
-        read: ({ req }) => req.user.role === "admin",
-        update: ({ req }) => req.user.role === "admin",
+        create: isAdminFieldLevel,
+        read: isAdminFieldLevel,
+        update: isAdminFieldLevel,
       },
       options: [
         {
@@ -104,13 +102,13 @@ export const Products: CollectionConfig = {
     {
       name: "images",
       type: "array",
-      label: "Product images",
+      label: "Ürün görselleri",
       minRows: 1,
       maxRows: 4,
       required: true,
       labels: {
-        singular: "Image",
-        plural: "Images",
+        singular: "Görsel",
+        plural: "Görseller",
       },
       fields: [
         {
