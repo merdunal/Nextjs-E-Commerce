@@ -1,4 +1,4 @@
-import { RefObject, useEffect } from "react";
+import { RefObject, useEffect, useState, useRef } from "react";
 
 type Event = MouseEvent | TouchEvent;
 
@@ -25,3 +25,33 @@ export const useOnClickOutside = <T extends HTMLElement = HTMLElement>(
     };
   }, [ref, handler]); // Reload only if ref or handler changes
 };
+
+export const useIntersectionObserver = (callback: () => void) => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          callback();
+        }
+      },
+      { threshold: 1.0 }
+    );
+
+    observer.observe(element);
+
+    return () => {
+      observer.unobserve(element);
+    };
+  }, [callback]);
+
+  return ref;
+};
+
+
+
+

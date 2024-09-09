@@ -56,6 +56,47 @@ export const appRouter = router({
         nextPage: hasNextPage ? nextPage : null,
       };
     }),
+
+    getInfiniteProductsByCategory: publicProcedure
+    .input(
+      z.object({
+        limit: z.number().min(4).max(100),
+        cursor: z.number().nullish(), // Ensure cursor is nullable
+        category: z.string(),
+      })
+    )
+    .query(async ({ input }) => {
+      const { limit, cursor, category } = input;
+
+      const payload = await getPayloadClient();
+
+      const page = cursor || 1;
+
+      const {
+        docs: items,
+        hasNextPage,
+        nextPage,
+      } = await payload.find({
+        collection: "products",
+        where: {
+          approvedForSale: {
+            equals: "approved",
+          },
+          category: {
+            equals: category,
+          },
+        },
+        sort: "desc", // Adjust sorting as needed
+        depth: 1,
+        limit,
+        page,
+      });
+
+      return {
+        items,
+        nextPage: hasNextPage ? nextPage : null,
+      };
+    }),
 });
 
 export type AppRouter = typeof appRouter;
