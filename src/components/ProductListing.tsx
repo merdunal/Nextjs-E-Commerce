@@ -6,6 +6,8 @@ import Link from "next/link";
 import { cn, formatPrice } from "@/lib/utils";
 import { PRODUCT_CATEGORIES } from "@/config";
 import ImageSlider from "./ImageSlider";
+import { buttonVariants } from "./ui/button";
+import AddToCartButton from "./AddToCartButton";
 
 interface ProductListingProps {
   product: Product | null;
@@ -35,24 +37,26 @@ const ProductListing = ({ product, index }: ProductListingProps) => {
 
   if (product && isVisible) {
     return (
-      <Link
-        className={cn("invisible h-full cursor-pointer group/main", {
-          "visible animate-in fade-in-5": isVisible,
-        })}
-        href={`/product/${product.id}`}
-      >
-        {" "}
-        <div className="flex flex-col w-full">
+      <div className="group flex flex-col w-full rounded-lg bg-white border border-gray-300 shadow-md py-4 px-4 transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+        <Link
+          className={cn("invisible h-full cursor-pointer group/main", {
+            "visible animate-in fade-in-5": isVisible,
+          })}
+          href={`/product/${product.id}`}
+        >
           <ImageSlider urls={validUrls} />
           <h3 className="mt-4 font-medium text-sm text-gray-700">
             {product.name}
           </h3>
           <p className="mt-1 text-sm text-gray-500">{label}</p>
-          <p className="mt-1 font-medium text-sm text-gray-900">
+          <p className="mt-1 font-medium text-sm text-gray-900 mb-8">
             {formatPrice(product.price)}
           </p>
+        </Link>
+        <div className="flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <AddToCartButton product={product} />
         </div>
-      </Link>
+      </div>
     );
   }
 };
