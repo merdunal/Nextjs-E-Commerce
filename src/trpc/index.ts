@@ -61,7 +61,7 @@ export const appRouter = router({
     .input(
       z.object({
         limit: z.number().min(4).max(100),
-        cursor: z.number().nullish(), // Ensure cursor is nullable
+        cursor: z.number().nullish(),
         category: z.string(),
       })
     )
@@ -86,7 +86,46 @@ export const appRouter = router({
             equals: category,
           },
         },
-        sort: "desc", // Adjust sorting as needed
+        sort: "desc",
+        depth: 1,
+        limit,
+        page,
+      });
+
+      return {
+        items,
+        nextPage: hasNextPage ? nextPage : null,
+      };
+    }),
+
+    searchProducts: publicProcedure
+    .input(z.object({
+      search: z.string().min(1),
+      limit: z.number().min(1).max(100).default(10),
+      cursor: z.number().nullish(),
+    }))
+    .query(async ({ input }) => {
+      const { search, limit, cursor } = input;
+
+      const payload = await getPayloadClient();
+      const page = cursor || 1;
+
+      const {
+        docs: items,
+        hasNextPage,
+        nextPage,
+      } = await payload.find({
+        collection: "products",
+        where: {
+          approvedForSale: {
+            equals: "approved",
+          },
+          name: {
+            contains: search,
+            mode: 'insensitive',
+          },
+        },
+        sort: "desc",
         depth: 1,
         limit,
         page,
