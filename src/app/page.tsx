@@ -1,28 +1,36 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import ProductReel from "@/components/ProductReel";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { ArrowDownToLine, CheckCircle, LeafIcon } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
   const perks = [
     {
-      name: "Anında teslimat",
-      Icon: ArrowDownToLine,
-      description:
-        "Satın aldığınız ürünleri anında kargo ile kapınızda teslim alın.",
+      name: "Adres",
+      link: "",
+      additionalPerks: [
+        { name: "adres", link: "" },
+        { name: "Tel No", link: "" },
+        { name: "mail", link: "" },
+      ],
     },
     {
-      name: "Ürün garantisi",
-      Icon: CheckCircle,
-      description:
-        "Tüm ürünlerimiz garanti kapsamındadır.",
+      name: "Kurumsal",
+      link: "",
+      additionalPerks: [
+        { name: "Gizlilik Politikası", link: "" },
+        { name: "Teslimat Şartları", link: "" },
+        { name: "Mesafeli Satış Sözleşmesi", link: "" },
+      ],
     },
     {
-      name: "Bize ulaşın",
-      Icon: LeafIcon,
-      description:
-        "eticaret@gmail.com<br/>+90 123 456 7890",
+      name: "Müşteri Hizmetleri",
+      link: "",
+      additionalPerks: [
+        { name: "24/7 Müşteri Desteği", link: "" },
+        { name: "Bayilik Başvurusu", link: "" },
+        { name: "Teknik Servis", link: "" },
+      ],
     },
   ];
 
@@ -31,14 +39,14 @@ export default function Home() {
       <MaxWidthWrapper>
         <div className="py-20 mx-auto text-center flex flex-col items-center max-w-3xl">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-            Kaliteli {" "}
+            Kaliteli{" "}
             <span className="text-green-600">elektronik ürün </span>
-            ve {" "}
+            ve{" "}
             <span className="text-green-600">aksesuarlar </span>
-            İçin Pazar Yeriniz {" "}
+            İçin Pazar Yeriniz{" "}
           </h1>
           <p className="mt-6 text-lg max-w-prose text-muted-foreground">
-          Hoş geldiniz! sitemizde yer alan her ürün, ekibimiz tarafından titizlikle doğrulanmış olup en yüksek kalite standartlarına uygunluğu garanti edilmiştir.
+            Hoş geldiniz! sitemizde yer alan her ürün, ekibimiz tarafından titizlikle doğrulanmış olup en yüksek kalite standartlarına uygunluğu garanti edilmiştir.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
             <Link href="/products" className={buttonVariants()}>
@@ -52,35 +60,41 @@ export default function Home() {
           query={{ sort: "desc", limit: 4 }}
           href="/products"
           title="Tüm Ürünler"
-       />
+        />
       </MaxWidthWrapper>
 
       <section className="border-t border-gray-200 bg-gray-50">
-        <MaxWidthWrapper className="py-20">
-          <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8 lg-gap-y-0">
-            {perks.map((perk) => (
-              <div
-                key={perk.name}
-                className="text-center md:flex md:items-start md:text-left lg:block lg:text-center"
-              >
-                <div className="md:flex-shrink-0 flex justify-center">
-                  <div className="h-16 w-16 flex items-center justify-center rounded-full bg-gray-200 text-gray-900">
-                    {<perk.Icon className="w-1/3 h-1/3" />}
-                  </div>
-                </div>
-                <div className="mt-6 md:ml-4 md:mt-0 lg:ml-0 lg:mt-6">
-                  <h3 className="text-base font-medium text-gray-900">
-                    {perk.name}
-                  </h3>
-                  <p className="mt-3 text-sm text-muted-foreground"
-                     dangerouslySetInnerHTML={{ __html: perk.description }}
-                  />
-                </div>
-              </div>
-            ))}
+  <MaxWidthWrapper className="py-20">
+    <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8 justify-items-center">
+      {perks.map((perk) => (
+        <div key={perk.name} className="flex flex-col items-start">
+          <div className="mt-6">
+            <a
+              href={perk.link} // Main perk link
+              className="text-base font-medium text-gray-900 hover:text-blue-600 block mb-2"
+            >
+              {perk.name}
+            </a>
+            <ul className="mt-2 text-base text-gray-900">
+              {perk.additionalPerks.map((additional) => (
+                <li key={additional.name} className="mb-2">
+                  <a
+                    href={additional.link} // Link for each additional perk
+                    className="hover:text-blue-600 block"
+                  >
+                    {additional.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
-        </MaxWidthWrapper>
-      </section>
+        </div>
+      ))}
+    </div>
+  </MaxWidthWrapper>
+</section>
+
+
     </>
   );
 }
