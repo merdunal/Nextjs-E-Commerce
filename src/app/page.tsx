@@ -9,9 +9,9 @@ export default function Home() {
       name: "Adres",
       link: "",
       additionalPerks: [
-        { name: "adres", link: "" },
-        { name: "Tel No", link: "" },
-        { name: "mail", link: "" },
+        { name: "Bursa Merkez", link: "" },
+        { name: "0555 555 55 55", link: "" },
+        { name: "dummymail@dummy.com", link: "" },
       ],
     },
     {
@@ -64,7 +64,7 @@ export default function Home() {
       </MaxWidthWrapper>
 
       <section className="border-t border-gray-200 bg-gray-50">
-  <MaxWidthWrapper className="py-20">
+  <div className="py-10">
     <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8 justify-items-center">
       {perks.map((perk) => (
         <div key={perk.name} className="flex flex-col items-start">
@@ -91,9 +91,18 @@ export default function Home() {
         </div>
       ))}
     </div>
-  </MaxWidthWrapper>
+    </div>
 </section>
 
+<footer className="bg-gray-50 py-10">
+        <MaxWidthWrapper>
+          <div className="flex justify-center space-x-4">
+            <img src="..\media\Visa_Inc._logo.svg.png" alt="American Express" className="h-8" />
+            <img src="..\media\Mastercard-logo.svg.png" alt="Discover" className="h-8" />
+            {/* Daha fazla logo ekleyebilirsiniz */}
+          </div>
+        </MaxWidthWrapper>
+      </footer>
 
     </>
   );
