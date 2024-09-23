@@ -25,8 +25,11 @@ const SearchPage = ({ params }: SearchPageParams) => {
 
   const { searchedtext } = params;
 
+  // Decode the searched text to display it correctly
+  const decodedSearchedText = decodeURIComponent(searchedtext);
+
   const { data, fetchNextPage, hasNextPage } = trpc.searchProducts.useInfiniteQuery(
-    { search: searchedtext, limit: 10 },
+    { search: decodedSearchedText, limit: 10 },
     { getNextPageParam: (lastPage) => lastPage.nextPage }
   );
 
@@ -70,7 +73,7 @@ const SearchPage = ({ params }: SearchPageParams) => {
     <MaxWidthWrapper>
       <section className="py-16">
         <h1 className="text-3xl md:text-4xl font-extrabold text-center text-gray-900 capitalize tracking-wide mb-12 md:mb-16">
-          "{searchedtext}" için Arama Sonuçları
+          "{decodedSearchedText}" için Arama Sonuçları
         </h1>
 
         {noProductsMessage ? (
