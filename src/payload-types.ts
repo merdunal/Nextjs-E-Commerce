@@ -49,6 +49,7 @@ export interface Product {
   price: number;
   category: 'cep-telefonu-ve-tablet' | 'powerbank' | 'sarj-cihazi' | 'kablo' | 'ses-ve-muzik' | 'arac-tutucu' | 'aksesuarlar' | 'giyilebilir-teknoloji' | 'hafiza-urunleri' | 'cevre-birimleri' | 'telefon-kilifi' | 'telefon-ekran-koruyucu' | 'tablet-kilifi' | 'tablet-ekran-koruyucu';
   approvedForSale?: ('pending' | 'approved' | 'denied') | null;
+  quantity?: number;
   priceId?: string | null;
   stripeId?: string | null;
   images: {

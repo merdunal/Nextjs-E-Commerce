@@ -16,8 +16,9 @@ const Page = () => {
     setIsMounted(true);
   }, []);
 
+  // Calculate total price considering the quantity of each product
   const cartTotal = items.reduce(
-    (total, { product }) => total + product.price,
+    (total, { product, quantity }) => total + product.price * quantity, // Multiply price by quantity
     0
   );
 
@@ -66,7 +67,7 @@ const Page = () => {
               })}
             >
               {isMounted &&
-                items.map(({ product }) => {
+                items.map(({ product, quantity }) => {
                   const label = PRODUCT_CATEGORIES.find(
                     (c) => c.value === product.category
                   )?.label;
@@ -103,13 +104,11 @@ const Page = () => {
                             </div>
 
                             <div className="mt-1 flex text-sm">
-                              <p className="text-muted-foreground">
-                                {label}
-                              </p>
+                              <p className="text-muted-foreground">{label}</p>
                             </div>
 
                             <p className="mt-1 text-sm font-medium text-gray-900">
-                              {formatPrice(product.price)}
+                              {formatPrice(product.price)} x {quantity} {/* Show quantity */}
                             </p>
                           </div>
 
@@ -128,7 +127,6 @@ const Page = () => {
 
                         <p className="mt-4 flex space-x-2 text-sm text-gray-700">
                           <Check className="h-5 w-5 flex-shrink-0 text-green-500" />
-
                           <span>Anında teslimat</span>
                         </p>
                       </div>
@@ -167,9 +165,7 @@ const Page = () => {
               </div>
 
               <div className="flex items-center justify-between border-t border-gray-200 pt-4">
-                <div className="text-base font-medium text-gray-900">
-                  Toplam
-                </div>
+                <div className="text-base font-medium text-gray-900">Toplam</div>
                 <div className="text-base font-medium text-gray-900">
                   {isMounted ? (
                     formatPrice(cartTotal + fee)
@@ -181,15 +177,7 @@ const Page = () => {
             </div>
 
             <div className="mt-6">
-              <Button
-                // disabled={items.length === 0 || isLoading}
-                disabled={items.length === 0}
-                className="w-full"
-                size="lg"
-              >
-                {/* {isLoading ? (
-                  <Loader2 className='w-4 h-4 animate-spin mr-1.5' />
-                ) : null} */}
+              <Button disabled={items.length === 0} className="w-full" size="lg">
                 Satın Al
               </Button>
             </div>

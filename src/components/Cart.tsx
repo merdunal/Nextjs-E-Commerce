@@ -16,7 +16,7 @@ import { buttonVariants } from "./ui/button";
 import Image from "next/image";
 import { useCart } from "@/hooks/use-cart";
 import { ScrollArea } from "./ui/scroll-area";
-import CartItem from "./CartItem";
+import CartItem from "./CartItem"; // CartItem expects `item` with both product and quantity
 import { useEffect, useState } from "react";
 
 const Cart = () => {
@@ -29,8 +29,9 @@ const Cart = () => {
     setIsMounted(true);
   }, []);
 
+  // Calculate total price based on item price and quantity
   const cartTotal = items.reduce(
-    (total, { product }) => total + product.price,
+    (total, { product, quantity }) => total + product.price * quantity, // Multiply price by quantity
     0
   );
 
@@ -55,8 +56,8 @@ const Cart = () => {
           <>
             <div className="flex w-full flex-col pr-6">
               <ScrollArea>
-                {items.map(({ product }) => (
-                  <CartItem product={product} key={product.id} />
+                {items.map((item) => (
+                  <CartItem item={item} key={item.product.id} />
                 ))}
               </ScrollArea>
             </div>
@@ -73,7 +74,7 @@ const Cart = () => {
                 </div>
                 <div className="flex">
                   <span className="flex-1">Toplam</span>
-                  <span>{formatPrice(cartTotal + fee)}</span>
+                  <span>{formatPrice(cartTotal + fee)}</span> {/* Total price includes fee */}
                 </div>
               </div>
 
