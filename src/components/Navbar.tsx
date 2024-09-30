@@ -39,33 +39,37 @@ const Navbar = async () => {
               </div>
 
               <div className="ml-auto flex items-center space-x-4">
-                {user ? (
-                  <UserAccountNav user={user} />
-                ) : (
-                  <>
-                    <Link
-                      href="/sign-in"
-                      className={buttonVariants({ variant: "ghost" })}
-                    >
-                      Giriş yap
-                    </Link>
-                    <span
-                      className="h-6 w-px bg-gray-200"
-                      aria-hidden="true"
-                    />
-                    <Link
-                      href="/sign-up"
-                      className={buttonVariants({ variant: "ghost" })}
-                    >
-                      Hesap oluştur
-                    </Link>
-                  </>
-                )}
+  {user ? (
+    <UserAccountNav user={user} />
+  ) : (
+    <>
+      <Link
+        href="/sign-in"
+        className={buttonVariants({ variant: "ghost" })}
+      >
+        {/* Change text based on screen size */}
+        <span className="block md:hidden">Giriş/Kayıt</span> {/* Mobile Text */}
+        <span className="hidden md:block">Giriş Yap</span> {/* Desktop Text */}
+      </Link>
+      <span
+        className="h-6 w-px bg-gray-200"
+        aria-hidden="true"
+      />
+      {/* Hide the "Hesap oluştur" button on medium devices */}
+      <Link
+        href="/sign-up"
+        className={`${buttonVariants({ variant: "ghost" })} hidden md:block`}
+      >
+        Hesap oluştur
+      </Link>
+    </>
+  )}
 
-                <div className="ml-4 flow-root lg:ml-6">
-                  <Cart />
-                </div>
-              </div>
+  <div className="ml-4 flow-root lg:ml-6">
+    <Cart />
+  </div>
+</div>
+
             </div>
           </div>
         </MaxWidthWrapper>

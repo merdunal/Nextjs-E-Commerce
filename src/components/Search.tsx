@@ -54,7 +54,7 @@ const Search = ({ ...props }: SearchProps) => {
         <button
           type="button"
           onClick={openModal}
-          className="w-full h-10 flex items-center justify-center rounded-lg border border-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-500 transition-all duration-200 hover:border-gray-500 hover:bg-gray-50"
+          className="w-12 h-12 flex items-center justify-center rounded-lg border border-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-500 transition-all duration-200 hover:border-gray-500 hover:bg-gray-50"
         >
           <SearchIcon className="h-6 w-6 text-gray-500" />
         </button>
