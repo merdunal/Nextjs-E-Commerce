@@ -21,18 +21,21 @@ const NavItems = () => {
     };
 
     document.addEventListener("keydown", handler);
+
     return () => {
       document.removeEventListener("keydown", handler);
     };
   }, []);
 
   const isAnyOpen = ActiveIndex !== null;
+
   const navRef = useRef<HTMLDivElement | null>(null);
+
   useOnClickOutside(navRef, () => setActiveIndex(null));
   useOnClickOutside(navRef, () => setIsDropdownOpen(false));
 
   return (
-    <div className="relative flex gap-4 h-full overflow-hidden" ref={navRef}>
+    <div className="relative flex gap-4 h-full" ref={navRef}>
       <NavItem
         category={{ label: "Kategoriler", href: "#" }}
         handleOpen={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -40,7 +43,7 @@ const NavItems = () => {
         isAnyOpen={isAnyOpen}
       />
       {isDropdownOpen && (
-        <div className="absolute left-0 top-full w-full max-w-xs rounded-lg bg-white border border-gray-300 shadow-lg z-10">
+        <div className="absolute left-0 top-full w-80 rounded-lg bg-white border border-gray-300 shadow-lg z-10">
           <div className="relative p-2">
             <div className="grid grid-cols-2 gap-3">
               {PRODUCT_CATEGORIES.map((category) => (
@@ -51,7 +54,9 @@ const NavItems = () => {
                 >
                   <span className="flex-1">{category.label}</span>
                   <ChevronRight
-                    className={cn("h-4 w-4 transition-transform duration-300 ml-2")}
+                    className={cn(
+                      "h-4 w-4 transition-transform duration-300 ml-2"
+                    )}
                   />
                 </Link>
               ))}

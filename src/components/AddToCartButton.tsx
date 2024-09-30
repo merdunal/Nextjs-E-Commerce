@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { useCart } from "@/hooks/use-cart";
 import { Product } from "@/payload-types";
+import { ShoppingCart } from "lucide-react"; // Import the cart icon
 
 const AddToCartButton = ({ product }: { product: Product }) => {
   const { addItem } = useCart();
@@ -19,28 +20,35 @@ const AddToCartButton = ({ product }: { product: Product }) => {
   }, [isSuccess]);
 
   return (
-    <div className="flex flex-wrap items-center space-x-2 sm:space-x-4">
-      {/* Button for adding to cart */}
+    <div className="flex items-center justify-center w-full max-w-lg mx-auto"> {/* Center content horizontally */}
+ {/* Centering container with max width and margin */}
+      {/* Input for quantity - Smallest square possible */}
+      <input
+        type="number"
+        value={quantity}
+        min="1"
+        onChange={(e) => setQuantity(Number(e.target.value))} // Update quantity based on input
+        className="w-full h-8 p-1 border rounded text-sm text-center mr-2 md:h-12 md:w-full" // Adjust size for desktop
+      />
+      
+      {/* Button for adding to cart with icon on mobile */}
       <Button
         onClick={() => {
           console.log(`Product ID: ${product.id}, Quantity: ${quantity}`);
           addItem(product, quantity); // Passing both product and quantity to addItem
           setIsSuccess(true);
         }}
-        size="lg"
-        className="w-full sm:w-auto flex-1"
+        className="flex items-center justify-center md:justify-center md:items-center h-8 w-8 md:h-12 md:w-full" // Set height and width for the button, same size as input
       >
-        {isSuccess ? "Added to Cart" : "Add to Cart"}
+        {/* Display icon only on mobile */}
+        <span className="md:hidden">
+          <ShoppingCart size={16} /> {/* Smaller cart icon for mobile */}
+        </span>
+        {/* Display text only on larger screens */}
+        <span className="hidden md:block">
+          {isSuccess ? "Added" : "Add to Cart"}
+        </span>
       </Button>
-
-      {/* Input for quantity, adjusts based on screen size */}
-      <input
-        type="number"
-        value={quantity}
-        min="1"
-        onChange={(e) => setQuantity(Number(e.target.value))} // Update quantity based on input
-        className="w-full sm:w-16 p-2 border rounded mt-2 sm:mt-0"
-      />
     </div>
   );
 };
