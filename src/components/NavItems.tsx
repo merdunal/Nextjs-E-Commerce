@@ -33,6 +33,7 @@ const NavItems = () => {
 
   useOnClickOutside(navRef, () => setActiveIndex(null));
   useOnClickOutside(navRef, () => setIsDropdownOpen(false));
+  //
 
   return (
     <div className="relative flex gap-4 h-full" ref={navRef}>
