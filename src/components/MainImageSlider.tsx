@@ -14,7 +14,7 @@ const MainImageSlider = () => {
   const images = [
     "/eCommerce-Website-Features-1920-x-1080.jpg",
     "/e-commerce-1920-x-1080-wallpaper-tb4uqckgoo0883zw.jpg",
-    "/19201080.png",
+    "/Samsung-Galaxy-A15-5G-1.jpg",
     // Add more image paths as needed
   ];
 
@@ -29,7 +29,7 @@ const MainImageSlider = () => {
   }, []);
 
   return (
-    <div className="relative bg-zinc-100 overflow-hidden h-[600px] w-[1920px]">
+    <div className="relative bg-zinc-100 overflow-hidden rounded-xl h-[480px] w-[1280px]">
       <Swiper
         ref={sliderRef}
         pagination={{
@@ -47,7 +47,7 @@ const MainImageSlider = () => {
               alt={`Slide image ${index + 1}`}
               layout="fill" // Use layout fill for responsive resizing
               objectFit="cover" // Crop the image to fill
-              className="" // Optional: Add rounded corners if desired
+              className="rounded-xl" // Optional: Add rounded corners if desired
             />
           </SwiperSlide>
         ))}
@@ -64,7 +64,7 @@ const MainImageSlider = () => {
         </button>
         <button
           onClick={() => sliderRef.current.swiper.slideNext()}
-          className="hover:bg-gray-500 text-white rounded-full p-2 m-5"
+          className="hover:bg-gray-500 text-white rounded-full p-2 m-2"
           aria-label="Next Slide"
         >
           <ChevronRight className="h-6 w-6" />
