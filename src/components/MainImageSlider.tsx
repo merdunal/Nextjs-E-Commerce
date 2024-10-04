@@ -12,9 +12,9 @@ const MainImageSlider = () => {
   const sliderRef = useRef<any>(null);
 
   const images = [
-    "/hippo-email-sent.png",
-    "/hippo-empty-cart.png",
-    "/nhk8jg3psng71.jpg",
+    "/eCommerce-Website-Features-1920-x-1080.jpg",
+    "/e-commerce-1920-x-1080-wallpaper-tb4uqckgoo0883zw.jpg",
+    "/Samsung-Galaxy-A15-5G-1.jpg",
     // Add more image paths as needed
   ];
 
