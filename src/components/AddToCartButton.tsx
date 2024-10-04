@@ -20,8 +20,10 @@ const AddToCartButton = ({ product }: { product: Product }) => {
   }, [isSuccess]);
 
   return (
-    <div className="flex items-center justify-center w-full max-w-lg mx-auto"> {/* Center content horizontally */}
- {/* Centering container with max width and margin */}
+    <div className="flex items-center justify-center w-full max-w-lg mx-auto">
+      {" "}
+      {/* Center content horizontally */}
+      {/* Centering container with max width and margin */}
       {/* Input for quantity - Smallest square possible */}
       <input
         type="number"
@@ -30,7 +32,6 @@ const AddToCartButton = ({ product }: { product: Product }) => {
         onChange={(e) => setQuantity(Number(e.target.value))} // Update quantity based on input
         className="w-full h-8 p-1 border rounded text-sm text-center mr-2 md:h-12 md:w-full" // Adjust size for desktop
       />
-      
       {/* Button for adding to cart with icon on mobile */}
       <Button
         onClick={() => {
@@ -46,7 +47,7 @@ const AddToCartButton = ({ product }: { product: Product }) => {
         </span>
         {/* Display text only on larger screens */}
         <span className="hidden md:block">
-          {isSuccess ? "Added" : "Add to Cart"}
+          {isSuccess ? "Eklendi" : "Sepete Ekle"}
         </span>
       </Button>
     </div>

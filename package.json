@@ -2,20 +2,12 @@
   "name": "nextjs-e-commerce",
   "version": "0.1.0",
   "private": true,
-  "main": "dist/server.js",
   "scripts": {
     "dev": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts nodemon",
     "generate:types": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:types",
-    "build:payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload build",
-    "build:server": "tsc --project tsconfig.server.json",
-    "build:next": "cross-env PAYLOAD_CONFIG_PATH=dist/payload.config.js NEXT_BUILD=true node dist/server.js",
-    "build": "cross-env NODE_ENV=production npm install --omit=dev && npm run build:payload && npm run build:server && npm run copyfiles && npm run build:next",
-    "start": "cross-env PAYLOAD_CONFIG_PATH=dist/payload.config.js NODE_ENV=production node dist/server.js",
-    "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png}\" dist/",
+    "build": "next build",
+    "start": "next start",
     "lint": "next lint"
-  },
-  "resolutions": {
-    "cliui": "7.0.2"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -39,7 +31,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "lucide-react": "^0.372.0",
-    "next": "^14.2.14",
+    "next": "14.2.2",
     "nodemailer": "^6.9.13",
     "payload": "^2.14.1",
     "react": "^18",
@@ -58,7 +50,6 @@
     "@types/nodemailer": "^6.4.14",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "copyfiles": "^2.4.1",
     "eslint": "^8",
     "eslint-config-next": "14.2.2",
     "nodemon": "^3.1.0",
