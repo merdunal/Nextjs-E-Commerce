@@ -46,7 +46,7 @@ const AddToCartButton = ({ product }: { product: Product }) => {
         </span>
         {/* Display text only on larger screens */}
         <span className="hidden md:block">
-          {isSuccess ? "Added" : "Add to Cart"}
+          {isSuccess ? "Eklendi" : "Sepete Ekle"}
         </span>
       </Button>
     </div>
