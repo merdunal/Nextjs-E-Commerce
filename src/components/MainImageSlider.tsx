@@ -37,7 +37,7 @@ const MainImageSlider = () => {
         }}
         modules={[Pagination]}
         slidesPerView={1}
-        loop={true} // Enable looping
+        loop={true}
         className="h-full w-full"
       >
         {images.map((src, index) => (
@@ -45,15 +45,14 @@ const MainImageSlider = () => {
             <Image
               src={src}
               alt={`Slide image ${index + 1}`}
-              layout="fill" // Use layout fill for responsive resizing
-              objectFit="cover" // Crop the image to fill
-              //className="rounded-xl" // Optional: Add rounded corners if desired
+              fill
+              style={{ objectFit: "cover" }}
+              priority
             />
           </SwiperSlide>
         ))}
       </Swiper>
 
-      {/* Navigation Buttons */}
       <div className="absolute z-10 inset-0 flex items-center justify-between opacity-100 transition">
         <button
           onClick={() => sliderRef.current.swiper.slidePrev()}

@@ -49,6 +49,7 @@ const Page = () => {
                   <Image
                     src="/hippo-empty-cart.png"
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     loading="eager"
                     alt="empty shopping cart hippo"
                   />
@@ -81,6 +82,7 @@ const Page = () => {
                           {typeof image !== "string" && image.url ? (
                             <Image
                               fill
+                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                               src={image.url}
                               alt="product image"
                               className="h-full w-full rounded-md object-cover object-center sm:h-48 sm:w-48"

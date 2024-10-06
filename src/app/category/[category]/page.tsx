@@ -30,27 +30,28 @@ const CategoryPage = ({ params }: CategoryPageParams) => {
       { getNextPageParam: (lastPage) => lastPage.nextPage }
     );
 
-  useEffect(() => {
-    if (data) {
-      const newProducts = data.pages.flatMap((page) => page.items);
-
-      if (newProducts.length === 0 && products.length === 0) {
-        setNoProductsMessage("Bu kategoriye ait ürün bulunmamaktadır.");
-      } else {
-        setNoProductsMessage(null);
+    useEffect(() => {
+      if (data) {
+        const newProducts = data.pages.flatMap((page) => page.items);
+    
+        if (newProducts.length === 0 && products.length === 0) {
+          setNoProductsMessage("Bu kategoriye ait ürün bulunmamaktadır.");
+        } else {
+          setNoProductsMessage(null);
+        }
+    
+        setProducts((prev) => {
+          const existingProductIds = new Set(prev.map((p) => p.id));
+          const filteredNewProducts = newProducts.filter(
+            (p) => !existingProductIds.has(p.id)
+          );
+          return [...prev, ...filteredNewProducts];
+        });
+    
+        setHasMore(!!data.pages[data.pages.length - 1].nextPage);
       }
-
-      setProducts((prev) => {
-        const existingProductIds = new Set(prev.map((p) => p.id));
-        const filteredNewProducts = newProducts.filter(
-          (p) => !existingProductIds.has(p.id)
-        );
-        return [...prev, ...filteredNewProducts];
-      });
-
-      setHasMore(!!data.pages[data.pages.length - 1].nextPage);
-    }
-  }, [data]);
+    }, [data, products.length]);
+    
 
   const loadMore = async () => {
     if (hasMore && !loading) {

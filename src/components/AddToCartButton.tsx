@@ -35,7 +35,6 @@ const AddToCartButton = ({ product }: { product: Product }) => {
       {/* Button for adding to cart with icon on mobile */}
       <Button
         onClick={() => {
-          console.log(`Product ID: ${product.id}, Quantity: ${quantity}`);
           addItem(product, quantity); // Passing both product and quantity to addItem
           setIsSuccess(true);
         }}

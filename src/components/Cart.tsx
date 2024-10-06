@@ -101,6 +101,7 @@ const Cart = () => {
               <Image
                 src={"/hippo-empty-cart.png"}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 alt="empty shopping cart hippo"
               />
             </div>
