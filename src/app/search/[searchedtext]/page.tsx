@@ -1,4 +1,3 @@
-// src/app/search/[searchedtext]/page.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -19,9 +18,6 @@ const SearchPage = ({ params }: SearchPageParams) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [noProductsMessage, setNoProductsMessage] = useState<string | null>(
-    null
-  );
 
   const { searchedtext } = params;
 
@@ -37,12 +33,6 @@ const SearchPage = ({ params }: SearchPageParams) => {
   useEffect(() => {
     if (data) {
       const newProducts = data.pages.flatMap((page) => page.items);
-
-      if (newProducts.length === 0 && products.length === 0) {
-        setNoProductsMessage("Aradığınız terime uygun ürün bulunmamaktadır.");
-      } else {
-        setNoProductsMessage(null);
-      }
 
       setProducts((prev) => {
         const existingProductIds = new Set(prev.map((p) => p.id));
@@ -69,6 +59,12 @@ const SearchPage = ({ params }: SearchPageParams) => {
       loadMore();
     }
   });
+
+  // Determine if there are no products after the effect has run
+  const noProductsMessage =
+    products.length === 0
+      ? "Aradığınız terime uygun ürün bulunmamaktadır."
+      : null;
 
   return (
     <MaxWidthWrapper>

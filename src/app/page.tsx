@@ -1,3 +1,4 @@
+import Image from "next/image";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import ProductReel from "@/components/ProductReel";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -104,15 +105,19 @@ export default function Home() {
       <footer className="bg-gray-50 py-10">
         <MaxWidthWrapper>
           <div className="flex justify-center space-x-4">
-            <img
-              src="..\media\Visa_Inc._logo.svg.png"
-              alt="American Express"
-              className="h-8"
+            <Image
+              src="/media/Visa_Inc._logo.svg.png"
+              alt="Visa"
+              width={60} // Make sure this width is correct
+              height={20} // Make sure this height is correct
+              style={{width: 'auto', height: 'auto'}}
             />
-            <img
-              src="..\media\Mastercard-logo.svg.png"
-              alt="Discover"
-              className="h-8"
+            <Image
+              src="/media/Mastercard-logo.svg.png"
+              alt="Mastercard"
+              width={60} // Make sure this width is correct
+              height={20} // Make sure this height is correct
+              style={{width: 'auto', height: 'auto'}}
             />
             {/* Daha fazla logo ekleyebilirsiniz */}
           </div>

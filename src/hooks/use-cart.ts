@@ -34,12 +34,8 @@ export const useCart = create<CartState>()(
               ...existingItem,
               quantity: existingItem.quantity + quantity,
             };
-
-            console.log(`Final quantity of product ${product.id} is now ${updatedItems[existingItemIndex].quantity}`);
             return { items: updatedItems };
           } else {
-            // If it doesn't exist, add the new product with its quantity
-            console.log(`Adding new product ${product.id} with quantity ${quantity}.`);
             return { items: [...state.items, { product, quantity }] };
           }
         }),

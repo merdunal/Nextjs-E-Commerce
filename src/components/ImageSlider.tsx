@@ -52,7 +52,7 @@ const ImageSlider = ({ urls }: ImageSliderProps) => {
           })}
           aria-label="next image"
         >
-          <ChevronRight className="h-4 w-4 text-zinc-700" />{" "}
+          <ChevronRight className="h-4 w-4 text-zinc-700" />
         </button>
         <button
           onClick={(e) => {
@@ -66,7 +66,7 @@ const ImageSlider = ({ urls }: ImageSliderProps) => {
           })}
           aria-label="previous image"
         >
-          <ChevronLeft className="h-4 w-4 text-zinc-700" />{" "}
+          <ChevronLeft className="h-4 w-4 text-zinc-700" />
         </button>
       </div>
 
@@ -89,7 +89,8 @@ const ImageSlider = ({ urls }: ImageSliderProps) => {
               loading="eager"
               className="-z-10 h-full w-full object-cover object-center"
               src={url}
-              alt="Product image"
+              alt={`Product image ${i + 1}`}
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw" // Responsive sizes
             />
           </SwiperSlide>
         ))}
