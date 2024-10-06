@@ -1,11 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    domains: [
-      'localhost',
-      'yesilbeyaz-e-commerce.vercel.app',
-    ],
-  },
+	images: {
+		remotePatterns: [
+			{
+				protocol: "http",
+				hostname: "localhost",
+			},
+			{
+				protocol: "https",
+				hostname: "yesilbeyaz-e-commerce.vercel.app",
+			},
+		],
+	},
 };
 
 module.exports = nextConfig;

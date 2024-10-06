@@ -51,15 +51,8 @@ export function constructMetadata({
         },
       ],
     },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [image],
-      creator: '@YesilBeyaz',
-    },
     icons,
-    //metadataBase: new URL('https://digitalhippo.up.railway.app'),
+    metadataBase: new URL('https://yesilbeyaz-e-commerce.vercel.app'),
     ...(noIndex && {
       robots: {
         index: false,
