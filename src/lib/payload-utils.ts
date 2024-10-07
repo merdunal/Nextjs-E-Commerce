@@ -10,8 +10,9 @@ export const getServerSideUser = async (
   const meRes = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/me`,
     {
+      credentials: "include",
       headers: {
-        Authorization: `JWT ${token}`,
+        "Content-Type": "application/json",
       },
     }
   );
