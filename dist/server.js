@@ -80,17 +80,19 @@ var start = function () { return __awaiter(void 0, void 0, void 0, function () {
     var payload, cartRouter;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, (0, get_payload_1.getPayloadClient)({
-                    initOptions: {
-                        express: app,
-                        onInit: function (cms) { return __awaiter(void 0, void 0, void 0, function () {
-                            return __generator(this, function (_a) {
-                                cms.logger.info("Admin URL ".concat(cms.getAdminURL()));
-                                return [2 /*return*/];
-                            });
-                        }); },
-                    },
-                })];
+            case 0:
+                console.log("NEXT_PUBLIC_SERVER_URL:", process.env.NEXT_PUBLIC_SERVER_URL);
+                return [4 /*yield*/, (0, get_payload_1.getPayloadClient)({
+                        initOptions: {
+                            express: app,
+                            onInit: function (cms) { return __awaiter(void 0, void 0, void 0, function () {
+                                return __generator(this, function (_a) {
+                                    cms.logger.info("Admin URL ".concat(cms.getAdminURL()));
+                                    return [2 /*return*/];
+                                });
+                            }); },
+                        },
+                    })];
             case 1:
                 payload = _a.sent();
                 if (process.env.NEXT_BUILD) {
@@ -123,6 +125,10 @@ var start = function () { return __awaiter(void 0, void 0, void 0, function () {
                 });
                 app.use('/cart', cartRouter);
                 app.use("/api/trpc", trpcExpress.createExpressMiddleware({ router: trpc_1.appRouter, createContext: createContext }));
+                app.get("/api/users/me", function (req, res) {
+                    console.log("API /users/me called"); // Log to track when this route is hit
+                    res.status(200).json({ message: "This is a test" }); // Simple test response
+                });
                 app.use(function (req, res) { return (0, next_utils_1.nextHandler)(req, res); });
                 next_utils_1.nextApp.prepare().then(function () {
                     payload.logger.info("Next.js started");
