@@ -12,13 +12,14 @@ export const getServerSideUser = async (
     {
       credentials: "include",
       headers: {
+        Authorization: `JWT ${token}`,
         "Content-Type": "application/json",
       },
     }
   );
 
-  console.log("mRes:", meRes)
-  console.log("mRes json:", meRes.json())
+  //console.log("mRes:", meRes)
+  //console.log("mRes json:", meRes.json())
 
   if (!meRes.ok) {
     console.error("Failed to fetch user data:", await meRes.text());
