@@ -32,14 +32,12 @@ const Page = () => {
   const { mutate: signIn, isLoading } = trpc.auth.signIn.useMutation({
     onSuccess: () => {
       toast.success("Giriş Başarılı");
-      router.refresh();
 
       if (origin) {
         router.push(`/${origin}`);
         return;
       }
       router.push("/");
-      router.refresh();
     },
     onError: (err) => {
       if (err.data?.code === "UNAUTHORIZED") {
@@ -115,3 +113,4 @@ const Page = () => {
 };
 
 export default Page;
+
