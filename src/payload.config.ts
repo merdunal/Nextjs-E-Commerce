@@ -14,7 +14,7 @@ dotenv.config({
 });
 
 export default buildConfig({
-  serverURL: process.env.NEXT_PUBLIC_SERVER_URL,
+  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || "https://yesilbeyaz-e-commerce.vercel.app/",
   collections: [Users, Products, Media, Orders],
   routes: {
     admin: "/dashboard",
