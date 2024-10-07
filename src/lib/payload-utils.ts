@@ -16,11 +16,6 @@ export const getServerSideUser = async (
     }
   );
 
-  if (!meRes.ok) {
-    console.error("Failed to fetch user data:", await meRes.text());
-    return { user: null };
-  }
-
   const { user } = (await meRes.json()) as { user: User | null };
 
   return { user };
