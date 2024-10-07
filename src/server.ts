@@ -20,7 +20,6 @@ const createContext = ({
 export type ExpressContext = inferAsyncReturnType<typeof createContext>;
 
 const start = async () => {
-  console.log("NEXT_PUBLIC_SERVER_URL:", process.env.NEXT_PUBLIC_SERVER_URL);
   const payload = await getPayloadClient({
     initOptions: {
       express: app,
@@ -68,11 +67,6 @@ const start = async () => {
     "/api/trpc",
     trpcExpress.createExpressMiddleware({ router: appRouter, createContext })
   );
-
-  app.get("/api/users/me", (req, res) => {
-    console.log("API /users/me called"); // Log to track when this route is hit
-    res.status(200).json({ message: "This is a test" }); // Simple test response
-  });
 
   app.use((req, res) => nextHandler(req, res));
 
