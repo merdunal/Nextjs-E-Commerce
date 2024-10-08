@@ -179,9 +179,11 @@ const Page = () => {
             </div>
 
             <div className="mt-6">
+            <Link href="/payment">
               <Button disabled={items.length === 0} className="w-full" size="lg">
-                Satın Al
+                Ödeme işlemine geçin
               </Button>
+              </Link>
             </div>
           </section>
         </div>

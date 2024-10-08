@@ -86,7 +86,7 @@ const Cart = () => {
                       className: "w-full",
                     })}
                   >
-                    Ödeme işlemine geçin
+                    Alışverişi tamamla
                   </Link>
                 </SheetTrigger>
               </SheetFooter>

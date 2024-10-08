@@ -62,6 +62,25 @@ const start = async () => {
 
   app.use('/cart', cartRouter)
 
+  const paymentRouter = express.Router()
+
+  paymentRouter.use(payload.authenticate)
+
+  paymentRouter.get('/', (req, res) => {
+    const request = req as PayloadRequest;
+
+    if (!request.user) {
+      return res.redirect('/sign-in?origin=payment');
+    }
+
+    const parsedUrl = parse(req.url, true);
+    const { query } = parsedUrl;
+
+    return nextApp.render(req, res, '/payment', query);
+  });
+
+  app.use('/payment', paymentRouter);
+
 
   app.use(
     "/api/trpc",

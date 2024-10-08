@@ -2,6 +2,7 @@
 import { InputHTMLAttributes, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Search as SearchIcon, X as CloseIcon } from "lucide-react";
+import { Button } from "./ui/button";
 
 interface SearchProps extends InputHTMLAttributes<HTMLInputElement> {}
 
@@ -100,13 +101,13 @@ const Search = ({ ...props }: SearchProps) => {
               placeholder="Ürün arayın..."
               {...props}
             />
-            <button
+            <Button
               type="button"
               onClick={handleSearch}
-              className="mt-4 w-full h-10 rounded-lg bg-green-700 text-white transition-all duration-200 hover:bg-green-600"
+              className="mt-4 w-full"
             >
               Ara
-            </button>
+            </Button>
           </div>
         </div>
       )}
