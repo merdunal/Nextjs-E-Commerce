@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
 import { trpc } from "@/trpc/client";
+import { toast } from "sonner";
+import { useRouter } from 'next/navigation'; // Import useRouter
 
 const FormPayment = () => {
     const [cardNumber, setCardNumber] = useState('');
@@ -14,13 +16,18 @@ const FormPayment = () => {
     const [response, setResponse] = useState<any>(null);
     const [error, setError] = useState<string | null>(null);
 
+    const router = useRouter(); // Initialize useRouter
+
     const paymentMutation = trpc.payment.createPayment.useMutation({
         onSuccess: (data) => {
             setResponse(data);
             setError(null);
+            toast.success("Ödeme Başarılı!");
+            router.push("/thank-you"); // Redirect to success page on success
         },
         onError: (err) => {
             setError(err.message);
+            toast.error("Ödeme Başarısız.");
         }
     });
 
@@ -124,12 +131,6 @@ const FormPayment = () => {
                     <Button onClick={handlePayment}>Ödeme Yap</Button>
                 </div>
             </div>
-            {response && (
-                <div className="bg-slate-200 border-2 rounded-lg p-4">
-                    <h2>Sonuç:</h2>
-                    <pre>{JSON.stringify(response, null, 2)}</pre>
-                </div>
-            )}
             {error && (
                 <div className="bg-red-200 border-2 rounded-lg p-4">
                     <h2>Hata:</h2>

@@ -33,6 +33,8 @@ const Page = () => {
     onSuccess: () => {
       toast.success("Giriş Başarılı");
 
+      console.log("Redirecting to:", origin ? `/${origin}` : "/");
+
       if (origin) {
         router.push(`/${origin}`);
         return;
